@@ -2,6 +2,7 @@ package com.mosquefinder.app
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.widget.TextView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -13,21 +14,30 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var countdown:TextView;
-
-
+    lateinit var dataBaseHelper:DataBaseHelper
+    private lateinit var fajr_time:TextView
+    private lateinit var thur_time:TextView
+    private lateinit var asr_time:TextView
+    private lateinit var magrieb_time:TextView
+    private lateinit var ishai_time:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        countdown = findViewById(R.id.timeRemaining)
+        dataBaseHelper = DataBaseHelper(this)
+        dataBaseHelper.addTime()
 
-        val viewModel = ViewModelProvider(this).get(ViewModelLiveData::class.java)
-        viewModel.startTimer()
-        viewModel.seconds().observe(this, androidx.lifecycle.Observer {
-            countdown.text = it
-        })
+        fajr_time = findViewById(R.id.fajr_time)
+        thur_time = findViewById(R.id.thur_time)
+        asr_time = findViewById(R.id.asr_time)
+        magrieb_time = findViewById(R.id.magrieb_time)
+        ishai_time = findViewById(R.id.ishai_time)
 
+        fajr_time.text = dataBaseHelper.salaahTimes[0]
+        thur_time.text = dataBaseHelper.salaahTimes[1]
+        asr_time.text = dataBaseHelper.salaahTimes[2]
+        magrieb_time.text = dataBaseHelper.salaahTimes[1]
+        ishai_time.text = dataBaseHelper.salaahTimes[2]
     }
 }
