@@ -7,6 +7,48 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/timeTill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="67dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="135dp"
+        android:text="Time till next Waqt"
+        android:theme="@style/Theme.MosqueFinder.HomeScreenTitle"
+        app:layout_constraintBottom_toTopOf="@+id/title"
+        app:layout_constraintEnd_toStartOf="@+id/nextSalaah"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nextSalaah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="125dp"
+        android:layout_marginBottom="95dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/remainingTime"
+        app:layout_constraintTop_toBottomOf="@id/timeTill"
+        android:theme="@style/Theme.MosqueFinder.HomeScreenTime"/>
+
+    <TextView
+        android:id="@+id/remainingTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="95dp"
+        app:layout_constraintBottom_toTopOf="@+id/title"
+        app:layout_constraintEnd_toStartOf="@+id/nextSalaah"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeTill"
+        android:theme="@style/Theme.MosqueFinder.HomeScreenTime"/>
 
     <TextView
         android:id="@+id/title"
@@ -16,11 +58,11 @@
         android:layout_marginTop="250dp"
         android:layout_marginBottom="550dp"
         android:text="Salaah Times"
-        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:theme="@style/Theme.MosqueFinder.HomeScreenTitle"/>
 
     <TextView
         android:id="@+id/fajr"
@@ -33,16 +75,18 @@
         app:layout_constraintBottom_toTopOf="@id/thur"
         app:layout_constraintEnd_toStartOf="@id/fajr_time"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title" />
+        app:layout_constraintTop_toBottomOf="@id/title"
+        android:theme="@style/Theme.MosqueFinder.HomeScreenTime"/>
 
     <TextView
         android:id="@+id/fajr_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="150dp"
         android:layout_marginBottom="15dp"
+        android:theme="@style/Theme.MosqueFinder.HomeScreenTime"
         app:layout_constraintBottom_toTopOf="@id/thur_time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,16 +103,18 @@
         app:layout_constraintBottom_toTopOf="@id/asr"
         app:layout_constraintEnd_toStartOf="@id/thur_time"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fajr" />
+        app:layout_constraintTop_toBottomOf="@id/fajr"
+        android:theme="@style/Theme.MosqueFinder.HomeScreenTime"/>
 
     <TextView
         android:id="@+id/thur_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="150dp"
         android:layout_marginBottom="15dp"
+        android:theme="@style/Theme.MosqueFinder.HomeScreenTime"
         app:layout_constraintBottom_toTopOf="@id/asr_time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,16 +131,18 @@
         app:layout_constraintBottom_toTopOf="@id/magrieb"
         app:layout_constraintEnd_toStartOf="@id/asr_time"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/thur" />
+        app:layout_constraintTop_toBottomOf="@id/thur"
+        android:theme="@style/Theme.MosqueFinder.HomeScreenTime"/>
 
     <TextView
         android:id="@+id/asr_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="150dp"
         android:layout_marginBottom="15dp"
+        android:theme="@style/Theme.MosqueFinder.HomeScreenTime"
         app:layout_constraintBottom_toTopOf="@id/magrieb_time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,16 +159,18 @@
         app:layout_constraintBottom_toTopOf="@id/ishai"
         app:layout_constraintEnd_toStartOf="@id/magrieb_time"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/asr" />
+        app:layout_constraintTop_toBottomOf="@id/asr"
+        android:theme="@style/Theme.MosqueFinder.HomeScreenTime"/>
 
     <TextView
         android:id="@+id/magrieb_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="150dp"
         android:layout_marginBottom="15dp"
+        android:theme="@style/Theme.MosqueFinder.HomeScreenTime"
         app:layout_constraintBottom_toTopOf="@id/ishai_time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -137,72 +187,34 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/ishai_time"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/magrieb" />
+        app:layout_constraintTop_toBottomOf="@id/magrieb"
+        android:theme="@style/Theme.MosqueFinder.HomeScreenTime"/>
 
     <TextView
         android:id="@+id/ishai_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="150dp"
         android:layout_marginBottom="200dp"
+        android:theme="@style/Theme.MosqueFinder.HomeScreenTime"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/magrieb_time" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="600dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:clickable="true"
-        android:src="@android:drawable/ic_dialog_map"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <fragment-->
+<!--        android:id="@+id/fragment"-->
+<!--        android:name="androidx.navigation.fragment.NavHostFragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:defaultNavHost="true"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:navGraph="@navigation/nav_graph" />-->
 
-    <TextView
-        android:id="@+id/timeTill"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginStart="67dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="23dp"
-        android:text="Time till next Waqt"
-        app:layout_constraintEnd_toStartOf="@+id/nextSalaah"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/nextSalaah"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="95dp"
-        android:text="Salaah Placement"
-        app:layout_constraintBottom_toTopOf="@+id/title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/remainingTime"
-        app:layout_constraintTop_toBottomOf="@id/timeTill" />
-
-    <TextView
-        android:id="@+id/remainingTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="95dp"
-        app:layout_constraintBottom_toTopOf="@+id/title"
-        app:layout_constraintEnd_toStartOf="@+id/nextSalaah"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeTill" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

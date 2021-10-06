@@ -1,12 +1,11 @@
 package com.mosquefinder.app
 
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mosquefinder.R
+import com.mosquefinder.app.api.Item
 import java.text.SimpleDateFormat
 import java.time.Duration
 import java.time.LocalTime
@@ -38,31 +37,12 @@ class MainActivity : AppCompatActivity() {
     private val ISHAI = "Ishai"
 
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         dataBaseHelper = DataBaseHelper(this)
         dataBaseHelper.addTime()
-
-//        val duration = Duration.between(start, stop).toString()
-//
-//        var timeHours:String =
-//            if (duration[2].isDigit() && duration[3].isDigit()) {
-//            "Hours is :" + duration[2] + duration[3]
-//            } else {
-//            "Hours is :" + duration[2]
-//            }
-//        var timeMinuites: String? = null
-//        try {
-//            if (duration[5].isDigit() && duration[6].isDigit()) {
-//                timeMinuites = "Minuites is :" + duration[5] + duration[6]
-//            }
-//        } catch (e : StringIndexOutOfBoundsException){
-//            timeMinuites = null
-//        }
-
 
         fajr_time = findViewById(R.id.fajr_time)
         thur_time = findViewById(R.id.thur_time)
@@ -78,32 +58,22 @@ class MainActivity : AppCompatActivity() {
         magrieb_time.text = dataBaseHelper.salaahTimes[3]
         ishai_time.text = dataBaseHelper.salaahTimes[4]
 
-//        timehour.text = timeHours
-//        timemin.text = timeMinuites
-//        if (timeMinuites == null){
-//            timehour.text = null
-//            timemin.text = timeHours
-//        }
-//
-
-
-
-        Log.d("TAG", isBetween(4,0).toString())
+//        DataFromApi(this).getDataFromApi("cape-town")
 
         when (true) {
-            isBetween(4,0) -> nextSalaah.text = "Fajr"
-            isBetween(0,1) -> nextSalaah.text = "Thur"
-            isBetween(1,2) -> nextSalaah.text = "Asr"
-            isBetween(2,3) -> nextSalaah.text = "Magrieb"
-            isBetween(3,4) -> nextSalaah.text = "Ishai"
+            isBetween(4,0) -> nextSalaah.text = FAJR
+            isBetween(0,1) -> nextSalaah.text = THUR
+            isBetween(1,2) -> nextSalaah.text = ASR
+            isBetween(2,3) -> nextSalaah.text = MAGRIEB
+            isBetween(3,4) -> nextSalaah.text = ISHAI
         }
 
         when (nextSalaah.text){
-            "Fajr" -> timemin.text = displayRemainingTime(0)
-            "Thur" -> timemin.text = displayRemainingTime(1)
-            "Asr" -> timemin.text = displayRemainingTime(2)
-            "Magrieb" -> timemin.text = displayRemainingTime(3)
-            "Ishai" -> timemin.text = displayRemainingTime(4)
+            FAJR -> timemin.text = displayRemainingTime(0)
+            THUR -> timemin.text = displayRemainingTime(1)
+            ASR -> timemin.text = displayRemainingTime(2)
+            MAGRIEB -> timemin.text = displayRemainingTime(3)
+            ISHAI -> timemin.text = displayRemainingTime(4)
         }
     }
 
@@ -136,16 +106,12 @@ class MainActivity : AppCompatActivity() {
     private fun isBetween(startIndex:Int, endIndex:Int): Boolean{
         val previousSalaahTime: LocalTime = LocalTime.parse(dataBaseHelper.salaahTimes[startIndex])
         val nextSalaahTime: LocalTime = LocalTime.parse(dataBaseHelper.salaahTimes[endIndex])
-        Log.d("isBetween: ", currentTime.toString() + " " + previousSalaahTime.toString() + " " + nextSalaahTime.toString() + " : " + (currentTime.isBefore(nextSalaahTime) && currentTime.isAfter(previousSalaahTime)))
 
         if (endIndex == 0){
             return currentTime.isAfter(previousSalaahTime)
         } else {
             return currentTime.isBefore(nextSalaahTime) && currentTime.isAfter(previousSalaahTime)
         }
-
-
-
     }
 
     private fun calculateHoursRemaining(): String{
@@ -165,7 +131,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun calculateMinRemaning(): String? {
+    private fun calculateMinRemaning(): String? {
         var firstMinDigit: Char?
         var secondMinDigit: Char?
         var minRemaining: String?
@@ -201,4 +167,17 @@ class MainActivity : AppCompatActivity() {
             return minRemaining
         }
     }
+
+//    override fun onDataCompleteFromApi(salaah: Item) {
+//        fajr_time.text = salaah.fajr
+//        thur_time.text = salaah.dhuhr
+//        asr_time.text = salaah.asr
+//        magrieb_time.text = salaah.maghrib
+//        ishai_time.text = salaah.isha
+//
+//    }
+//
+//    override fun onDataErrorFromApi(throwable: Throwable) {
+//        error("error ---------> ${throwable.localizedMessage}")
+//    }
 }

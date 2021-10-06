@@ -3,26 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/homeFragment">
+
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.mosquefinder.app.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first" >
-
+        android:id="@+id/homeFragment"
+        android:name="com.example.mosquefinder.home_fragment"
+        android:label="fragment_home_fragment"
+        tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_home_fragment_to_calendar"
+            app:destination="@id/calendarFragment" />
+        <action
+            android:id="@+id/action_home_fragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.mosquefinder.app.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second" >
-
+        android:id="@+id/calendarFragment"
+        android:name="com.example.mosquefinder.calendar"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" >
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_calendar_to_home_fragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.mosquefinder.app.maps.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" >
+        <action
+            android:id="@+id/action_mapsFragment_to_home_fragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

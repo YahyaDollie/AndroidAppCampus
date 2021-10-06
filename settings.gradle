@@ -1,2 +1,4 @@
+include ':home'
+include ':lib'
 include ':app'
 rootProject.name = "Mosque Finder"
