@@ -1,4 +1,4 @@
-package com.mosquefinder.app
+package com.mosquefinder.app.home
 
 import android.content.Context
 import com.mosquefinder.app.api.Item
@@ -8,18 +8,18 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class DataFromApi(context: Context) {
-    val salaahTimes = context as ApiHandler
+    val salaahView = context as ApiHandler
 
     fun getDataFromApi(city: String){
         RetrofitService.create()
             .getApi(city)
             .enqueue(object : Callback<SalaahTimes> {
                 override fun onResponse(call: Call<SalaahTimes>, response: Response<SalaahTimes>) {
-                    salaahTimes.onDataCompleteFromApi(response.body()?.items?.get(0) as Item)
+                    salaahView.onDataCompleteFromApi(response.body()?.items?.get(0) as Item)
                 }
 
                 override fun onFailure(call: Call<SalaahTimes>, t: Throwable) {
-                    salaahTimes.onDataErrorFromApi(t)
+                    salaahView.onDataErrorFromApi(t)
                 }
 
             })

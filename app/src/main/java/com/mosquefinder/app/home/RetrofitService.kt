@@ -1,4 +1,4 @@
-package com.mosquefinder.app
+package com.mosquefinder.app.home
 
 import com.mosquefinder.app.api.SalaahTimes
 import retrofit2.Call
@@ -10,7 +10,7 @@ import retrofit2.http.Path
 interface RetrofitService {
 
     @GET("{city}.json?key=e7e6e40fc282866c47cda3e819fc9f04")
-    fun getApi(@Path("city") city: String) : Call<SalaahTimes>
+    fun getApi(@Path("city")city: String): Call<SalaahTimes>
 
     companion object {
         fun create(): RetrofitService {
