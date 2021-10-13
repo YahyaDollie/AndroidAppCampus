@@ -1,13 +1,12 @@
 package com.mosquefinder.app.home
 
-import android.content.Context
 import com.mosquefinder.app.api.Item
 import com.mosquefinder.app.api.SalaahTimes
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DataFromApi(context: Context) {
+class DataFromApi(context: com.mosquefinder.app.home.SalaahTimes) {
     val salaahView = context as ApiHandler
 
     fun getDataFromApi(city: String){
