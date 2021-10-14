@@ -1,5 +1,6 @@
 package com.mosquefinder.app.home
 
+import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
@@ -17,6 +18,7 @@ class SalaahTimes(view: View) : FrameLayout(view.context), ApiHandler {
     private var asr: TextView = view.findViewById(R.id.asr_time)
     private var magrieb: TextView = view.findViewById(R.id.magrieb_time)
     private var ishai: TextView = view.findViewById(R.id.ishai_time)
+    private var nextSalaah: TextView = view.findViewById(R.id.nextSalaah)
 
     private lateinit var fajrTime:String
     private lateinit var thurTime:String
@@ -45,15 +47,21 @@ class SalaahTimes(view: View) : FrameLayout(view.context), ApiHandler {
 
     fun setSalaahTimes() {
         //TODO: Change to times from api
-        fajr.text = fajrTime
-        thur.text = thurTime
-        asr.text = asrTime
-        magrieb.text = magirebTime
-        ishai.text = ishaiTime
+        if (!fajrTime.isNullOrBlank()) {
+            fajr.text = fajrTime
+            thur.text = thurTime
+            asr.text = asrTime
+            magrieb.text = magirebTime
+            ishai.text = ishaiTime
+        }
     }
 
     fun setNextTime() {
+        nextSalaah.text = "Thur"
+    }
 
+    fun getCurrentTime() {
+        Log.d("getCurrentTime: ", fajr.text.toString())
     }
 
 }
