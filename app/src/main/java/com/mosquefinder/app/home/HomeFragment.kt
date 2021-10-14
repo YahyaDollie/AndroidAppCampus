@@ -26,7 +26,6 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         homeView = inflater.inflate(R.layout.fragment_home, container, false)
-        SalaahTimes(homeView)
         return homeView
     }
 

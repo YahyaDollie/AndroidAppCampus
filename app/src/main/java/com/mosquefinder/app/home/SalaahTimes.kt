@@ -11,7 +11,7 @@ import com.mosquefinder.app.api.Item
 This class sets the time for each Salaah, gets the times from the API and calculates time till next salaah
  */
 
-class SalaahTimes(view: View) : FrameLayout(view.context), ApiHandler {
+class SalaahTimes(view: View) : FrameLayout(view.context) {
 
     private var fajr: TextView = view.findViewById(R.id.fajr_time)
     private var thur: TextView = view.findViewById(R.id.thur_time)
@@ -25,25 +25,6 @@ class SalaahTimes(view: View) : FrameLayout(view.context), ApiHandler {
     private lateinit var asrTime:String
     private lateinit var magirebTime:String
     private lateinit var ishaiTime:String
-
-    private var dateFromApi: DataFromApi = DataFromApi(this)
-
-    init {
-        dateFromApi.getDataFromApi("cape-town")
-    }
-
-    override fun onDataCompleteFromApi(salaah: Item) {
-        fajrTime = salaah.fajr
-        thurTime = salaah.dhuhr
-        asrTime = salaah.asr
-        magirebTime = salaah.maghrib
-        ishaiTime = salaah.isha
-        setSalaahTimes()
-    }
-
-    override fun onDataErrorFromApi(throwable: Throwable) {
-        error("error ---------> ${throwable.localizedMessage}")
-    }
 
     fun setSalaahTimes() {
         //TODO: Change to times from api
