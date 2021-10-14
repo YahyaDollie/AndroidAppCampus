@@ -1,21 +1,10 @@
 package com.mosquefinder.app
 
-import android.content.Intent
-import android.content.IntentFilter
 import android.os.Bundle
-import android.util.Log
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import com.example.mosquefinder.R
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.mosquefinder.app.api.Item
 import com.mosquefinder.app.home.CurrentTime
-import java.text.SimpleDateFormat
-import java.time.Duration
-import java.time.LocalTime
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 

@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.example.mosquefinder.R
-import com.mosquefinder.app.api.Item
 
 /*
 This class sets the time for each Salaah, gets the times from the API and calculates time till next salaah

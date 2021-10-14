@@ -1,4 +1,4 @@
-package com.mosquefinder.app.api
+package com.mosquefinder.app.network
 
 data class TodayWeather(
     val pressure: String,
