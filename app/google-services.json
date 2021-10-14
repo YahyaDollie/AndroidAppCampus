@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "331047747541",
+    "project_id": "campusproject-b5783",
+    "storage_bucket": "campusproject-b5783.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331047747541:android:c11dff5a30d50a7e60875c",
+        "android_client_info": {
+          "package_name": "com.example.mosquefinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "331047747541-h804ktp1nsjto9t9gm2g1e626luph57g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mosquefinder",
+            "certificate_hash": "b8a90b54102af68760b000f31540dc7d02dc4448"
+          }
+        },
+        {
+          "client_id": "331047747541-hspfftlieu3oeiecor9dk07n84rg6da2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJ3kGSL2zhe5o-EQmLTfylDFXe9hr9KWQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "331047747541-hspfftlieu3oeiecor9dk07n84rg6da2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
