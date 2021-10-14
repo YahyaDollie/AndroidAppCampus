@@ -28,7 +28,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="AIzaSyCHTltl6vAq01DVco6iGnxx-JtQcSzD9mI" />
 
         <activity
             android:name="com.mosquefinder.app.MainActivity"
