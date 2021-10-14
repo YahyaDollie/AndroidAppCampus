@@ -1,4 +1,4 @@
-package com.mosquefinder.app
+package com.mosquefinder.app.home
 
 import com.mosquefinder.app.api.Item
 

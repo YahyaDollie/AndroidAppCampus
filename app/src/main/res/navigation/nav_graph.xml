@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.mosquefinder.home_fragment"
+        android:name="com.mosquefinder.app.home.HomeFragment"
         android:label="fragment_home_fragment"
         tools:layout="@layout/fragment_home" >
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/calendarFragment"
-        android:name="com.example.mosquefinder.calendar"
+        android:name="com.mosquefinder.app.calendar.calendar"
         android:label="fragment_calendar"
         tools:layout="@layout/fragment_calendar" >
         <action
