@@ -68,7 +68,7 @@ class HomeFragment : Fragment() {
         super.onDestroy()
     }
 
-    fun volleyRequest():String{
+    fun volleyRequest(){
         val url = "https://muslimsalat.com/cape-town.json?key=e7e6e40fc282866c47cda3e819fc9f04"
 
         val requestQueue = Volley.newRequestQueue(context)
