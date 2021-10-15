@@ -1,5 +1,7 @@
 package com.mosquefinder.app.home
 
+import java.util.*
+
 interface CurrentTimeCallbackListener {
-    fun displayCurrentTime(time: String)
+    fun displayCurrentTime(time: Date)
 }

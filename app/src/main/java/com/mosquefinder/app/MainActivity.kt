@@ -1,6 +1,5 @@
 package com.mosquefinder.app
 
-import android.content.BroadcastReceiver
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
@@ -8,11 +7,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import com.example.mosquefinder.R
-import com.mosquefinder.app.home.CurrentTime
+import com.mosquefinder.app.home.BroadcastHandler
 import com.mosquefinder.app.home.CurrentTimeCallbackListener
-import com.mosquefinder.app.home.DailyTimesCallbackListener
 
-class MainActivity : AppCompatActivity(),CurrentTimeCallbackListener {
+class MainActivity : AppCompatActivity() {
 
 //    lateinit var dataBaseHelper:DataBaseHelper
     private lateinit var navController: NavController
@@ -32,7 +30,7 @@ class MainActivity : AppCompatActivity(),CurrentTimeCallbackListener {
 //    private val  = date.toString("HH:mm")
 //    private var currentTime: LocalTime = LocalTime.parse(dateInString)
     private lateinit var navigationManager: NavigationManager
-    private lateinit var currentTime: CurrentTime
+    private lateinit var broadcastHandler: BroadcastHandler
     private lateinit var remainingTime:TextView
 //    private val FAJR = "Fajr"
 //    private val THUR = "Thur"
@@ -43,17 +41,12 @@ class MainActivity : AppCompatActivity(),CurrentTimeCallbackListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.content_main)
-//        navController = findNavController(R.id.nav_graph)
-        val intentFilter = IntentFilter(Intent.ACTION_TIME_TICK)
+//        val intentFilter = IntentFilter(Intent.ACTION_TIME_TICK)
         setContentView(R.layout.activity_main)
-        currentTime = CurrentTime()
-        currentTime.setCurrentTimeCallbackListener(this)
-        registerReceiver(currentTime, intentFilter)
-//
-//        dataBaseHelper = DataBaseHelper(this)
-//        dataBaseHelper.addTime()
-//
+//        broadcastHandler = BroadcastHandler()
+//        broadcastHandler.setCurrentTimeCallbackListener(this)
+//        registerReceiver(broadcastHandler, intentFilter)
+
 //        fajr_time = findViewById(R.id.fajr_time)
 //        thur_time = findViewById(R.id.thur_time)
 //        asr_time = findViewById(R.id.asr_time)
@@ -67,9 +60,7 @@ class MainActivity : AppCompatActivity(),CurrentTimeCallbackListener {
 //        asr_time.text = dataBaseHelper.salaahTimes[2]
 //        magrieb_time.text = dataBaseHelper.salaahTimes[3]
 //        ishai_time.text = dataBaseHelper.salaahTimes[4]
-
-//        DataFromApi(this).getDataFromApi("cape-town")
-
+//
 //        when (true) {
 //            isBetween(4,0) -> nextSalaah.text = FAJR
 //            isBetween(0,1) -> nextSalaah.text = THUR
@@ -87,10 +78,10 @@ class MainActivity : AppCompatActivity(),CurrentTimeCallbackListener {
 //        }
     }
 
-    override fun displayCurrentTime(time: String) {
-        remainingTime = findViewById(R.id.remainingTime)
-        remainingTime.text = time
-    }
+//    override fun displayCurrentTime(time: String) {
+//        remainingTime = findViewById(R.id.remainingTime)
+//        remainingTime.text = time
+//    }
 //
 //    private fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
 //        val formatter = SimpleDateFormat(format, locale)
