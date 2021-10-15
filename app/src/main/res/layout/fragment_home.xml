@@ -4,77 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#23AFAB"
     tools:context=".HomeFragment">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="@dimen/home_screen_left_margin"
-        android:layout_marginEnd="@dimen/home_screen_right_margin"
-        android:orientation="vertical">
+        android:layout_marginLeft="@dimen/home_screen_left_margin"
+        android:layout_marginTop="4dp">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="120dp"
+            android:background="@drawable/container_bg">
+        </ImageView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/time_remaining_till"
-            android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading">
-        </TextView>
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="@dimen/home_screen_left_margin"
+            android:layout_marginEnd="@dimen/home_screen_right_margin"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="{Next salaah}"
-            android:id="@+id/nextSalaah"
-            android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading">
-        </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time_remaining_till"
+                android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading">
+            </TextView>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/placeholder_time"
-            android:id="@+id/remainingTime"
-            android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading">
-        </TextView>
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="{Next salaah}"
+                android:id="@+id/nextSalaah"
+                android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading">
+            </TextView>
 
-    <LinearLayout
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder_time"
+                android:id="@+id/remainingTime"
+                android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading">
+            </TextView>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="120dp"
-        android:orientation="horizontal">
+        android:layout_marginLeft="@dimen/home_screen_left_margin"
+        android:layout_marginRight="@dimen/home_screen_right_margin">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:src="@drawable/mosque"
-            android:id="@+id/mosque_button"
-            app:backgroundTint="#23AF74">
-        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/container_bg">
+        </ImageView>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:src="@drawable/placeholder"
-            android:id="@+id/maps_button"
-            app:backgroundTint="#23AF74">
-        </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:src="@drawable/calendar"
-            android:id="@+id/calendar_button"
-            app:backgroundTint="#23AF74">
-        </com.google.android.material.floatingactionbutton.FloatingActionButton>
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginStart="@dimen/home_screen_left_margin"
+            android:orientation="horizontal">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/mosque"
+                android:id="@+id/mosque_button"
+                app:backgroundTint="#23AF74">
+            </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/placeholder"
+                android:id="@+id/maps_button"
+                app:backgroundTint="#23AF74">
+            </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/calendar"
+                android:id="@+id/calendar_button"
+                app:backgroundTint="#23AF74">
+            </com.google.android.material.floatingactionbutton.FloatingActionButton>
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/title"

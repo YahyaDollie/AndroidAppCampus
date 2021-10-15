@@ -1,12 +1,18 @@
 package com.mosquefinder.app
 
+import android.content.BroadcastReceiver
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import com.example.mosquefinder.R
 import com.mosquefinder.app.home.CurrentTime
+import com.mosquefinder.app.home.CurrentTimeCallbackListener
+import com.mosquefinder.app.home.DailyTimesCallbackListener
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),CurrentTimeCallbackListener {
 
 //    lateinit var dataBaseHelper:DataBaseHelper
     private lateinit var navController: NavController
@@ -27,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 //    private var currentTime: LocalTime = LocalTime.parse(dateInString)
     private lateinit var navigationManager: NavigationManager
     private lateinit var currentTime: CurrentTime
-
+    private lateinit var remainingTime:TextView
 //    private val FAJR = "Fajr"
 //    private val THUR = "Thur"
 //    private val ASR = "Asr"
@@ -39,9 +45,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.content_main)
 //        navController = findNavController(R.id.nav_graph)
-//        val intentFilter = IntentFilter(Intent.ACTION_TIME_TICK)
+        val intentFilter = IntentFilter(Intent.ACTION_TIME_TICK)
         setContentView(R.layout.activity_main)
-//        registerReceiver(currentTime.timeBroadcastReceiver, intentFilter)
+        currentTime = CurrentTime()
+        currentTime.setCurrentTimeCallbackListener(this)
+        registerReceiver(currentTime, intentFilter)
 //
 //        dataBaseHelper = DataBaseHelper(this)
 //        dataBaseHelper.addTime()
@@ -77,6 +85,11 @@ class MainActivity : AppCompatActivity() {
 //            MAGRIEB -> timemin.text = displayRemainingTime(3)
 //            ISHAI -> timemin.text = displayRemainingTime(4)
 //        }
+    }
+
+    override fun displayCurrentTime(time: String) {
+        remainingTime = findViewById(R.id.remainingTime)
+        remainingTime.text = time
     }
 //
 //    private fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
