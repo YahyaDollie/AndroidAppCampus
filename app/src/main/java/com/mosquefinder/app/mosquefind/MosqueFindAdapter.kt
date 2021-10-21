@@ -1,22 +1,26 @@
 package com.mosquefinder.app.mosquefind
 
-import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.mosquefinder.R
 
-internal class MosqueFindAdapter(context: Context, private val data: List<Items>):
+internal class MosqueFindAdapter(var items: List<MasjidModel>):
     RecyclerView.Adapter<MosqueFindAdapter.ViewHolder>() {
 
-    private var items: List<Items> = ArrayList()
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        TODO("Not yet implemented")
+
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_list, parent, false)
+        return ViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val cuurentItem = items[position]
+        holder.bind(items[position])
     }
 
     override fun getItemCount(): Int {
@@ -24,7 +28,15 @@ internal class MosqueFindAdapter(context: Context, private val data: List<Items>
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+        fun bind(masjidModel: MasjidModel){
+            val masjidName = itemView.findViewById<TextView>(R.id.masjid_title)
+            masjidName.text = masjidModel.mosqueTitle
+            val masjidArea = itemView.findViewById<TextView>(R.id.address)
+            masjidArea.text = masjidModel.area
+            val masjidimg = itemView.findViewById<ImageView>(R.id.masjid_img)
+            Glide.with(itemView.context).load(masjidModel.img).into(masjidimg)
+            masjidimg.clipToOutline = true
+        }
     }
 
 }
