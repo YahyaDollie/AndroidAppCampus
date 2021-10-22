@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mosquefinder.R
 import com.google.firebase.firestore.*
-import com.mosquefinder.app.home.FirebaseService
 
 class MosqueFind : Fragment() {
     private lateinit var mosqueFindView: View

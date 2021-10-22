@@ -41,8 +41,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        val intentFilter = IntentFilter(Intent.ACTION_TIME_TICK)
         setContentView(R.layout.activity_main)
+//        val intentFilter = IntentFilter(Intent.ACTION_TIME_TICK)
+
 //        broadcastHandler = BroadcastHandler()
 //        broadcastHandler.setCurrentTimeCallbackListener(this)
 //        registerReceiver(broadcastHandler, intentFilter)

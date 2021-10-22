@@ -37,11 +37,11 @@ class CurrentTime(view:View) {
     }
 
     private fun calculateMin(){
-        //#TODO(do min logic for current time vs next salaah time)
+
     }
 
     private fun calculateHour(){
-        //#TODO(do hour logic for current time vs next salaah time)
+
     }
 
 }

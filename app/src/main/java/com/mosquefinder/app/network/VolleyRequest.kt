@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import android.view.View
 import com.android.volley.Request
+import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.mosquefinder.app.home.DailyTimesCallbackListener
@@ -11,9 +12,14 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 class VolleyRequest(view: View) {
-
     val context: Context = view.context
+    private val requestQueue:RequestQueue = Volley.newRequestQueue(context)
     private lateinit var dailyTimesCallbackListener: DailyTimesCallbackListener
+
+    fun <T> addToRequestQueue(request: Request<T>) {
+        requestQueue.add(request)
+    }
+
 
     fun volleyRequestDaily(){
         val url = "https://muslimsalat.com/cape-town.json?key=e7e6e40fc282866c47cda3e819fc9f04"

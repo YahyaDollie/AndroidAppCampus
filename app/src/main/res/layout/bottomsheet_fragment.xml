@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/Header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menu"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/Header_bg"
+        app:layout_constraintEnd_toEndOf="@id/Header_bg"
+        app:layout_constraintStart_toStartOf="@id/Header_bg"
+        app:layout_constraintTop_toTopOf="@id/Header_bg" />
+
+    <ImageView
+        android:id="@+id/Header_bg"
+        android:layout_width="0dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/container_bg"
+        app:layout_constraintBottom_toTopOf="@id/map_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/map_bg"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="250dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/calendar_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/container_bg" />
+
+    <ImageView
+        android:id="@+id/calendar_bg"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="@id/map_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/map_bg"
+        app:layout_constraintTop_toTopOf="@id/map_bg"
+        android:background="@drawable/container_bg" />
+
+    <ImageView
+        android:id="@+id/mosquefind_bg"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/map_bg"
+        app:layout_constraintStart_toStartOf="@id/map_bg"
+        app:layout_constraintTop_toBottomOf="@+id/map_bg"
+        android:background="@drawable/container_bg" />
+
+    <ImageButton
+        android:id="@+id/map_btn"
+        android:background="@drawable/placeholder"
+        android:layout_gravity="center"
+        app:layout_constraintStart_toStartOf="@id/map_bg"
+        app:layout_constraintBottom_toBottomOf="@id/map_bg"
+        app:layout_constraintTop_toTopOf="@id/map_bg"
+        app:layout_constraintEnd_toEndOf="@id/map_bg"
+        android:layout_height="50dp"
+        android:layout_width="50dp"/>
+
+    <ImageButton
+        android:id="@+id/calendar_btn"
+        android:background="@drawable/calendar"
+        app:layout_constraintStart_toStartOf="@id/calendar_bg"
+        app:layout_constraintBottom_toBottomOf="@id/calendar_bg"
+        app:layout_constraintTop_toTopOf="@id/calendar_bg"
+        app:layout_constraintEnd_toEndOf="@id/calendar_bg"
+        android:layout_height="50dp"
+        android:layout_width="50dp"/>
+
+    <ImageButton
+        android:id="@+id/mosquefind_btn"
+        android:background="@drawable/mosque"
+        app:layout_constraintStart_toStartOf="@id/mosquefind_bg"
+        app:layout_constraintBottom_toBottomOf="@id/mosquefind_bg"
+        app:layout_constraintTop_toTopOf="@id/mosquefind_bg"
+        app:layout_constraintEnd_toEndOf="@id/mosquefind_bg"
+        android:layout_height="50dp"
+        android:layout_width="50dp"/>
+
+    <TextView
+        android:id="@+id/map_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:text="Maps"
+        app:layout_constraintBottom_toBottomOf="@id/map_bg"
+        app:layout_constraintEnd_toEndOf="@id/map_bg"
+        app:layout_constraintStart_toStartOf="@id/map_bg"
+        app:layout_constraintTop_toTopOf="@id/map_bg" />
+
+    <TextView
+        android:id="@+id/calendar_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:text="Calendar"
+        app:layout_constraintBottom_toBottomOf="@id/calendar_bg"
+        app:layout_constraintEnd_toEndOf="@id/calendar_bg"
+        app:layout_constraintStart_toStartOf="@id/calendar_bg"
+        app:layout_constraintTop_toTopOf="@id/calendar_bg" />
+
+    <TextView
+        android:id="@+id/masjid_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:text="Masjids"
+        app:layout_constraintBottom_toBottomOf="@id/mosquefind_bg"
+        app:layout_constraintEnd_toEndOf="@id/mosquefind_bg"
+        app:layout_constraintStart_toStartOf="@id/mosquefind_bg"
+        app:layout_constraintTop_toTopOf="@id/mosquefind_bg" />
+</androidx.constraintlayout.widget.ConstraintLayout>
