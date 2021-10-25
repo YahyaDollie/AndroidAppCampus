@@ -7,9 +7,8 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.google.gson.GsonBuilder
 import com.mosquefinder.app.home.DailyTimesCallbackListener
-import org.json.JSONArray
-import org.json.JSONObject
 
 class VolleyRequest(view: View) {
     val context: Context = view.context
@@ -28,26 +27,34 @@ class VolleyRequest(view: View) {
         val jsonRequestObjectRequest = JsonObjectRequest(
             Request.Method.GET, url, null,
             { response ->
-                var items = response.get("items") as JSONArray
-                var items0 = items.get(0) as JSONObject
-                var fajr = items0.get("fajr")
-                var thur = items0.get("dhuhr")
-                var asr = items0.get("asr")
-                var magrieb = items0.get("maghrib")
-                var ishai = items0.get("isha")
-                dailyTimesCallbackListener.displayFajrTime(fajr)
-//                dailyTimesCallbackListener.displayThurTime(thur)
-//                dailyTimesCallbackListener.displayAsrTime(asr)
-//                dailyTimesCallbackListener.displayMagirebTime(magrieb)
-//                dailyTimesCallbackListener.displayIshaiTime(ishai)
-                Log.d("volleyRequest: ", fajr.toString())
+
+                val gson = GsonBuilder().create()
+                val obj = gson.fromJson(response.toString(), TimeModel::class.java)
+
+                val times = obj.items[0]
+
+                triggerCallback(times.fajr, times.dhuhr, times.asr, times.maghrib, times.isha)
             }, {
-                Log.d("volleyRequest: ", it.toString())
+
             })
         requestQueue.add(jsonRequestObjectRequest)
     }
 
     fun setDailyTimeCallbackListener(dailyTimesCallbackListener: DailyTimesCallbackListener){
         this.dailyTimesCallbackListener = dailyTimesCallbackListener
+    }
+
+    private fun triggerCallback(
+        fajr: String,
+        dhuhr: String,
+        asr: String,
+        maghrib: String,
+        isha: String
+    ) {
+        dailyTimesCallbackListener.displayFajrTime(fajr)
+        dailyTimesCallbackListener.displayThurTime(dhuhr)
+        dailyTimesCallbackListener.displayAsrTime(asr)
+        dailyTimesCallbackListener.displayMagirebTime(maghrib)
+        dailyTimesCallbackListener.displayIshaiTime(isha)
     }
 }
