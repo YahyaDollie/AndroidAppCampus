@@ -1,9 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".calendar">
+    tools:context=".CalendarFragment">
 
+    <TextView
+        android:id="@+id/gregorian_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="24dp"
+        android:text="Today's Date"
+        app:layout_constraintBottom_toTopOf="@+id/hijra_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/date_english"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="placeholder_date"
+        app:layout_constraintBottom_toBottomOf="@+id/gregorian_date"
+        app:layout_constraintStart_toEndOf="@+id/gregorian_date"
+        app:layout_constraintTop_toTopOf="@+id/gregorian_date" />
+
+    <TextView
+        android:id="@+id/hijra_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Islamic Date"
+        app:layout_constraintBottom_toTopOf="@+id/calendar_recyclerView"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/hijra_date_today"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="placeholder_date"
+        app:layout_constraintBottom_toBottomOf="@+id/hijra_date"
+        app:layout_constraintStart_toEndOf="@+id/hijra_date"
+        app:layout_constraintTop_toTopOf="@+id/hijra_date" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/calendar_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hijra_date"
+        tools:listitem="@layout/calendar_items"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

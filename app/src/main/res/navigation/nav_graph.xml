@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/calendarFragment"
-        android:name="com.mosquefinder.app.calendar.calendar"
+        android:name="com.mosquefinder.app.calendar.CalendarFragment"
         android:label="fragment_calendar"
         tools:layout="@layout/fragment_calendar" >
         <action
@@ -41,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/mosqueFind"
-        android:name="com.mosquefinder.app.mosquefind.MosqueFind"
+        android:name="com.mosquefinder.app.mosquefind.MosqueFindFragment"
         android:label="MosqueFind" >
         <action
             android:id="@+id/action_mosqueFind_to_homeFragment"

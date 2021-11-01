@@ -4,5 +4,5 @@
     <dimen name="home_screen_left_margin">16dp</dimen>
     <dimen name="home_screen_right_margin">16dp</dimen>
     <dimen name="home_screen_bottom_margin"></dimen>
-    <dimen name="home_screen_top_margin"></dimen>
+    <dimen name="home_screen_top_margin">12dp</dimen>
 </resources>

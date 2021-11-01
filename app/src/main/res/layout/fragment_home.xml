@@ -1,92 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-    <RelativeLayout
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/home_screen_left_margin"
-        android:layout_marginTop="20dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/location_holder"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/home_screen_left_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/home_screen_right_margin"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/home_screen_top_margin"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/header_background"
+                android:id="@+id/location_bg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/location_bg"
+                app:layout_constraintStart_toStartOf="@id/location_bg"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/location"
+                    android:text="Location:"
+                    android:layout_marginStart="@dimen/home_screen_left_margin"
+                    android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
+                    />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbarSize="30dp"
+                    android:id="@+id/location_spinner"
+                    android:spinnerMode="dropdown"
+                    />
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginStart="@dimen/home_screen_left_margin"
+        android:layout_marginEnd="@dimen/home_screen_right_margin"
+        android:layout_marginTop="20dp"
+        android:id="@+id/remaining_time_container"
+        app:layout_constraintTop_toBottomOf="@id/location_holder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
-            android:layout_width="250dp"
-            android:layout_height="120dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/container_bg" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/home_screen_left_margin"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="@dimen/home_screen_right_margin"
-            android:orientation="vertical">
+            android:id="@+id/current_time"
+            android:text="Current Time: "
+            android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/clockTime"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/time_remaining_till"
-                android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/clockTime"
+            android:text="00:00"
+            app:layout_constraintStart_toEndOf="@id/current_time"
+            app:layout_constraintTop_toTopOf="parent"
+            android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"/>
 
-            <TextView
-                android:id="@+id/nextSalaah"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="{Next salaah}"
-                android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading" />
+        <TextView
+            android:id="@+id/time_remaining_till"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/time_remaining_till"
+            android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/current_time"/>
 
-            <TextView
-                android:id="@+id/remainingTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/placeholder_time"
-                android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/nextSalaah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="{Next salaah}"
+            android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
+            app:layout_constraintStart_toEndOf="@id/time_remaining_till"
+            app:layout_constraintTop_toBottomOf="@id/current_time" />
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/remainingTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder_time"
+            android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/time_remaining_till"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginStart="@dimen/home_screen_left_margin"
         android:layout_marginEnd="@dimen/home_screen_right_margin"
-        android:layout_marginBottom="16dp">
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:background="@drawable/container_bg">
+            android:background="@drawable/header_background">
         </ImageView>
 
-
-        <ImageButton
-            android:id="@+id/bottom_sheet_menu_btn"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerInside"
-            android:src="@drawable/up_arrow">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        </ImageButton>
+            <ImageButton
+                android:id="@+id/bottom_sheet_menu_btn"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:scaleType="centerInside"
+                android:background="@drawable/header_background"
+                android:src="@drawable/up_arrow">
 
+            </ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Menu"
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal">
+
+            </TextView>
+        </LinearLayout>
     </FrameLayout>
-
-
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
-        android:layout_marginTop="150dp"
         android:layout_marginStart="@dimen/home_screen_left_margin"
         android:text="Salaah Times"
         android:textSize="42dp"
-        android:fontFamily="@font/flamenco_regular">
+        android:fontFamily="@font/flamenco_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/remaining_time_container">
     </TextView>
 
     <LinearLayout
@@ -96,7 +184,9 @@
         android:layout_marginBottom="100dp"
         android:layout_marginStart="@dimen/home_screen_left_margin"
         android:layout_marginEnd="300dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
@@ -161,7 +251,9 @@
         android:layout_marginStart="120dp"
         android:layout_marginBottom="100dp"
         android:layout_marginEnd="@dimen/home_screen_right_margin"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
@@ -218,14 +310,5 @@
         </TextView>
     </LinearLayout>
 
-    <Spinner
-        android:id="@+id/location_spinner"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/container_bg"
-        android:spinnerMode="dropdown"
-        />
 
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
