@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:id="@+id/homeFragment"/>
+    <item
+        android:title="Maps"
+        android:icon="@drawable/placeholder"
+        android:id="@+id/mapsFragment" />
+    <item
+        android:title="Calendar"
+        android:icon="@drawable/calendar"
+        android:id="@+id/calendarFragment" />
+    <item android:title="Masjids"
+        android:icon="@drawable/mosque"
+        android:id="@+id/masjidFragment" />
+</menu>

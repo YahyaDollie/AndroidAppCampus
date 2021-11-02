@@ -19,7 +19,7 @@
             app:destination="@id/mapsFragment" />
         <action
             android:id="@+id/action_homeFragment_to_mosqueFind"
-            app:destination="@id/mosqueFind" />
+            app:destination="@id/masjidFragment" />
     </fragment>
     <fragment
         android:id="@+id/calendarFragment"
@@ -40,7 +40,7 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/mosqueFind"
+        android:id="@+id/masjidFragment"
         android:name="com.mosquefinder.app.mosquefind.MosqueFindFragment"
         android:label="MosqueFind" >
         <action

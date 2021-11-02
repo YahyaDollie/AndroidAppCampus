@@ -122,48 +122,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginStart="@dimen/home_screen_left_margin"
-        android:layout_marginEnd="@dimen/home_screen_right_margin"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:background="@drawable/header_background">
-        </ImageView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/bottom_sheet_menu_btn"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:scaleType="centerInside"
-                android:background="@drawable/header_background"
-                android:src="@drawable/up_arrow">
-
-            </ImageButton>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Menu"
-                android:textSize="20sp"
-                android:layout_gravity="center_horizontal">
-
-            </TextView>
-        </LinearLayout>
-    </FrameLayout>
-
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
