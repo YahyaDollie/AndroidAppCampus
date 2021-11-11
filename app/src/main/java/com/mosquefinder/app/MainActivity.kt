@@ -1,28 +1,33 @@
 package com.mosquefinder.app
 
-import android.content.Intent
-import android.content.IntentFilter
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
-import com.etebarian.meowbottomnavigation.MeowBottomNavigation
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mosquefinder.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.rpc.Help
 import com.mosquefinder.app.home.BroadcastHandler
-import com.mosquefinder.app.home.CurrentTimeCallbackListener
+import com.mosquefinder.app.maps.MapsFragment
+import com.mosquefinder.app.network.Item
 
 class MainActivity : AppCompatActivity() {
 
 //    lateinit var dataBaseHelper:DataBaseHelper
     private lateinit var navController: NavController
-//    private lateinit var fajr_time:TextView
+    //    private lateinit var fajr_time:TextView
 //    private lateinit var thur_time:TextView
 //    private lateinit var asr_time:TextView
 //    private lateinit var magrieb_time:TextView
@@ -37,9 +42,8 @@ class MainActivity : AppCompatActivity() {
 //    private val date = getCurrentDateTime()
 //    private val  = date.toString("HH:mm")
 //    private var currentTime: LocalTime = LocalTime.parse(dateInString)
-    private lateinit var navigationManager: NavigationManager
-    private lateinit var broadcastHandler: BroadcastHandler
-    private lateinit var remainingTime:TextView
+    private lateinit var helpBtn : FloatingActionButton
+    private lateinit var bottomSheetDialog: BottomSheetDialog
 //    private val FAJR = "Fajr"
 //    private val THUR = "Thur"
 //    private val ASR = "Asr"
@@ -58,6 +62,21 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         bottomNavigationView.setupWithNavController(navController)
+
+//        checkPermissions(android.Manifest.permission.ACCESS_FINE_LOCATION, 1)
+//        checkPermissions(android.Manifest.permission.ACCESS_COARSE_LOCATION, 2)
+
+        bottomSheetDialog = BottomSheetDialog(this)
+
+        helpBtn = findViewById(R.id.faq_btn)
+        helpBtn.setOnClickListener {
+            val bottomSheetFragment = BottomSheetFragment()
+            bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
+        }
+
+
+//        checkPermissions(android.Manifest.permission.INTERNET, 3)
+
 
 //        val intentFilter = IntentFilter(Intent.ACTION_TIME_TICK)
 
@@ -94,6 +113,36 @@ class MainActivity : AppCompatActivity() {
 //            MAGRIEB -> timemin.text = displayRemainingTime(3)
 //            ISHAI -> timemin.text = displayRemainingTime(4)
 //        }
+    }
+
+    private fun checkPermissions(permission: String, requestCode: Int) {
+        if(ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
+        } else {
+            Toast.makeText(this, "Permission already granted", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 1) {
+            if (grantResults.isNotEmpty() && grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this, "Permission Granted", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this, "Permission Denied", Toast.LENGTH_LONG).show()
+            }
+        }
+        if (requestCode == 2) {
+            if (grantResults.isNotEmpty() && grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this, "Permission Granted", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this, "Permission Denied", Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
 //    override fun displayCurrentTime(time: String) {
@@ -204,4 +253,10 @@ class MainActivity : AppCompatActivity() {
 //    override fun onDataErrorFromApi(throwable: Throwable) {
 //        error("error ---------> ${throwable.localizedMessage}")
 //    }
+
+    internal fun onOpenMap() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment, MapsFragment())
+            .commit()
+    }
 }
