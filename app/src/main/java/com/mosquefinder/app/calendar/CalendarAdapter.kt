@@ -1,5 +1,6 @@
 package com.mosquefinder.app.calendar
 
+import android.annotation.SuppressLint
 import android.transition.TransitionManager
 import android.util.Log
 import android.view.LayoutInflater
@@ -41,19 +42,20 @@ class CalendarAdapter(var items: List<Item>):
         var magrieb :TextView = itemView.findViewById(R.id.magrieb_calendar)
         var ishai :TextView = itemView.findViewById(R.id.ishai_calendar)
 
+        @SuppressLint("SimpleDateFormat")
         fun onBind(calendarModel: Item){
             var timeFormat: DateFormat = SimpleDateFormat("hh:mm aa")
             val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd")
 
-            var outputTimeFormat : DateFormat = SimpleDateFormat("HH:mm")
+            var outputTimeFormat : DateFormat? = SimpleDateFormat("HH:mm")
             val outputDateFormat : DateFormat = SimpleDateFormat("dd")
 
             date.text = outputDateFormat.format(dateFormat.parse(calendarModel.date_for))
-            fajr.text = outputTimeFormat.format(timeFormat.parse(calendarModel.fajr))
-            thur.text = outputTimeFormat.format(timeFormat.parse(calendarModel.dhuhr))
-            asr.text = outputTimeFormat.format(timeFormat.parse(calendarModel.asr))
-            magrieb.text = outputTimeFormat.format(timeFormat.parse(calendarModel.maghrib))
-            ishai.text = outputTimeFormat.format(timeFormat.parse(calendarModel.isha))
+            fajr.text = outputTimeFormat?.format(timeFormat.parse(calendarModel.fajr))
+            thur.text = outputTimeFormat?.format(timeFormat.parse(calendarModel.dhuhr))
+            asr.text = outputTimeFormat?.format(timeFormat.parse(calendarModel.asr))
+            magrieb.text = outputTimeFormat?.format(timeFormat.parse(calendarModel.maghrib))
+            ishai.text = outputTimeFormat?.format(timeFormat.parse(calendarModel.isha))
         }
 
     }

@@ -1,11 +1,14 @@
 package com.mosquefinder.app.calendar
 
 import android.os.Bundle
+import android.os.TestLooperManager
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
@@ -19,7 +22,10 @@ import com.mosquefinder.app.network.TimeModel
 import com.mosquefinder.app.network.VolleyRequest
 import org.json.JSONObject
 import java.lang.IndexOutOfBoundsException
+import java.text.DateFormat
 import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class CalendarFragment : Fragment() {
 
@@ -40,18 +46,15 @@ class CalendarFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         extractData()
+        monthFromDate()
     }
 
     private fun initRecyclerView(){
         recyclerView = calendarView.findViewById(R.id.calendar_recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
         recyclerView.adapter = adapter
         adapter.items = calendarList
-        adapter.notifyDataSetChanged()
-    }
-
-    private fun loadData() {
-        adapter.items
         adapter.notifyDataSetChanged()
     }
 
@@ -72,18 +75,17 @@ class CalendarFragment : Fragment() {
         requestQueue.add(jsonRequestObjectRequest)
     }
 
-    fun gsonParserMonth(response: JSONObject){
+    private fun gsonParserMonth(response: JSONObject){
         val gson = GsonBuilder().create()
         val obj = gson.fromJson(response.toString(), MonthModel::class.java)
-
         calendarList = obj.items as ArrayList<Item>
 
         Log.d("gsonParserMonth: ", calendarList.toString())
     }
 
-    fun getMonth(){
-        val date = System.currentTimeMillis()
-
-//        dateFormat = SimpleDateFormat("MMMMM yyyy")
+    private fun monthFromDate() {
+        val calendar = Calendar.getInstance()
+        val month: TextView = calendarView.findViewById(R.id.month)
+        month.text = SimpleDateFormat("MMMM").format(calendar.time)
     }
 }

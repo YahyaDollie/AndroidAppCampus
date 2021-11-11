@@ -2,50 +2,50 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
     >
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/date_english">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/date_english"
+        android:layout_weight="1">
     </TextView>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/date_islamic">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fajr_calendar"
+        android:layout_weight="1">
     </TextView>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/fajr">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/thur_calendar"
+        android:layout_weight="1">
     </TextView>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/thur">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/asr_calendar"
+        android:layout_weight="1">
     </TextView>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/asr">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/magrieb_calendar"
+        android:layout_weight="1">
     </TextView>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/magrieb">
-    </TextView>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ishai">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ishai_calendar"
+        android:layout_weight="1">
     </TextView>
 
 </LinearLayout>
