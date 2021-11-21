@@ -1,4 +1,4 @@
-package com.mosquefinder.app
+package com.mosquefinder.app.models
 
 data class HelpItems (
     val heading: String,

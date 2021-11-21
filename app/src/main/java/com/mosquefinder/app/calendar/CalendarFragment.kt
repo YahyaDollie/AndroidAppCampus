@@ -1,7 +1,6 @@
 package com.mosquefinder.app.calendar
 
 import android.os.Bundle
-import android.os.TestLooperManager
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,13 +15,9 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.mosquefinder.R
 import com.google.gson.GsonBuilder
-import com.mosquefinder.app.mosquefind.MasjidModel
-import com.mosquefinder.app.network.Item
-import com.mosquefinder.app.network.TimeModel
-import com.mosquefinder.app.network.VolleyRequest
+import com.mosquefinder.app.models.Item
+import com.mosquefinder.app.models.MonthModel
 import org.json.JSONObject
-import java.lang.IndexOutOfBoundsException
-import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -33,7 +28,6 @@ class CalendarFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private var calendarList: ArrayList<Item> = ArrayList()
     private var adapter : CalendarAdapter = CalendarAdapter(calendarList)
-    private lateinit var volleyRequest: VolleyRequest
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -1,4 +1,4 @@
-package com.mosquefinder.app.calendar
+package com.mosquefinder.app.models
 
 data class CalendarModel(
     val englishDate: String,

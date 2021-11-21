@@ -18,6 +18,7 @@ class BroadcastHandler(): BroadcastReceiver() {
             updatedCurrentTime = Calendar.getInstance().time
             currentTimeCallbackListener.displayCurrentTime(updatedCurrentTime)
             Log.d("onReceive: ", updatedCurrentTime.toString())
+            currentTimeCallbackListener.displayCurrentTime(updatedCurrentTime)
             }
     }
 

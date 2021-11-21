@@ -6,17 +6,16 @@ import android.view.LayoutInflater
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mosquefinder.R
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.mosquefinder.app.models.HelpItems
 
 class BottomSheetFragment : BottomSheetDialogFragment() {
 
     private lateinit var recyclerView: RecyclerView
     private var helpList = arrayListOf(
         HelpItems("Home Screen", "The home screen displays the daily salaah times. It also includes the time left till the next salaah and the gives a display of the time according to your timezone."),
-        HelpItems("Maps", "The maps screen opens an instance of Google Maps showing your location and from there you can locate a nearby masjid."),
         HelpItems("Calendar", "The calendar screen displays the salaah times for the remaining days of the current month."),
-        HelpItems("MosqueList", "The mosques screen displays a list of masjids in and around Cape Town")
+        HelpItems("Masjid", "The masjid screen displays a list of masjids. clicking on the icon on the right of the masjid will open the location on Google Maps.")
     )
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

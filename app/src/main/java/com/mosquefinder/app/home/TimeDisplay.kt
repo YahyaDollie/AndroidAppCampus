@@ -4,8 +4,7 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.example.mosquefinder.R
-import com.mosquefinder.app.network.GSONRequest
-import com.mosquefinder.app.network.Item
+import com.mosquefinder.app.models.Item
 
 /*
 This class handles the time displayed till the next Salaah time

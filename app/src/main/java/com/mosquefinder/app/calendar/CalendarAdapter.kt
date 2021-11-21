@@ -9,11 +9,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mosquefinder.R
-import com.mosquefinder.app.mosquefind.MosqueFindAdapter
-import com.mosquefinder.app.network.Item
+import com.mosquefinder.app.models.Item
 import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.util.*
 
 class CalendarAdapter(var items: List<Item>):
     RecyclerView.Adapter<CalendarAdapter.ViewHolder>(){

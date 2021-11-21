@@ -1,4 +1,4 @@
-package com.mosquefinder.app.network
+package com.mosquefinder.app.models
 
 data class Item(
     val asr: String,

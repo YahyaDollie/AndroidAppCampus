@@ -4,13 +4,10 @@ import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mosquefinder.R
-import com.mosquefinder.app.network.Item
-import org.w3c.dom.Text
+import com.mosquefinder.app.models.HelpItems
 
 
 class HelpAdapter(var items:ArrayList<HelpItems>):
