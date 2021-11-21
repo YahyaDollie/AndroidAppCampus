@@ -8,4 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#FFAADDEE</color>
+
+    <color name="timberwolf">#FFDAD7CD</color>
+    <color name="asparagus">#FF87A878</color>
+    <color name="ash_gray">#FFC7CCB9</color>
+    <color name="tea_green">#FFCAE2BC</color>
+    <color name="tea_green_light">#FFDBF9B8</color>
+    <color name="laurel_green">#FFA3B18A</color>
 </resources>

@@ -15,9 +15,6 @@
             android:id="@+id/action_home_fragment_to_calendar"
             app:destination="@id/calendarFragment" />
         <action
-            android:id="@+id/action_home_fragment_to_mapsFragment"
-            app:destination="@id/mapsFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_mosqueFind"
             app:destination="@id/masjidFragment" />
     </fragment>
@@ -31,23 +28,11 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/mapsFragment"
-        android:name="com.mosquefinder.app.maps.MapsFragment"
-        android:label="fragment_maps"
-        tools:layout="@layout/fragment_maps" >
-        <action
-            android:id="@+id/action_mapsFragment_to_home_fragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/masjidFragment"
         android:name="com.mosquefinder.app.mosquefind.MosqueFindFragment"
         android:label="MosqueFind" >
         <action
             android:id="@+id/action_mosqueFind_to_homeFragment"
             app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_mosqueFind_to_mapsFragment"
-            app:destination="@id/mapsFragment" />
     </fragment>
 </navigation>

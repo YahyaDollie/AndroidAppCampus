@@ -6,14 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/match_constraint"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/title_container"
+        android:background="@color/asparagus">
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/match_constraint"
+        app:layout_constraintTop_toTopOf="@id/title_container"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/asparagus">
+
+    </FrameLayout>
+
+
+
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/location_holder"
+            android:id="@+id/location_container"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="@dimen/home_screen_left_margin"
+            android:layout_marginStart="@dimen/home_screen_start_margin"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="@dimen/home_screen_right_margin"
+            android:layout_marginEnd="@dimen/home_screen_end_margin"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="@dimen/home_screen_top_margin"
             >
@@ -39,7 +59,7 @@
                     android:layout_height="match_parent"
                     android:id="@+id/location"
                     android:text="Location:"
-                    android:layout_marginStart="@dimen/home_screen_left_margin"
+                    android:layout_marginStart="@dimen/home_screen_start_margin"
                     android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
                     />
 
@@ -57,215 +77,246 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginStart="@dimen/home_screen_left_margin"
-        android:layout_marginEnd="@dimen/home_screen_right_margin"
-        android:layout_marginTop="20dp"
         android:id="@+id/remaining_time_container"
-        app:layout_constraintTop_toBottomOf="@id/location_holder"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/match_constraint"
+        android:layout_marginStart="@dimen/home_screen_start_margin"
+        android:layout_marginTop="@dimen/home_screen_top_margin"
+        android:layout_marginEnd="@dimen/home_screen_end_margin"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/location_container">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="@dimen/match_constraint"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:background="@drawable/container_bg" />
 
         <TextView
+            android:id="@+id/current_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/current_time"
+            android:layout_marginStart="@dimen/home_screen_start_margin"
+            android:layout_marginTop="@dimen/home_screen_top_margin"
             android:text="Current Time: "
             android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
+            app:layout_constraintStart_toEndOf="@+id/clockTime"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/clockTime"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/clockTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/clockTime"
+            android:layout_marginTop="@dimen/home_screen_top_margin"
             android:text="00:00"
+            android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
             app:layout_constraintStart_toEndOf="@id/current_time"
-            app:layout_constraintTop_toTopOf="parent"
-            android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/time_remaining_till"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/home_screen_start_margin"
             android:text="@string/time_remaining_till"
             android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/current_time"/>
+            app:layout_constraintTop_toBottomOf="@id/current_time" />
 
         <TextView
             android:id="@+id/nextSalaah"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/home_screen_start_margin"
+            android:layout_marginEnd="@dimen/home_screen_end_margin"
             android:text="{Next salaah}"
             android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/time_remaining_till"
             app:layout_constraintTop_toBottomOf="@id/current_time" />
 
         <TextView
-            android:id="@+id/remainingTime"
+            android:id="@+id/remainingTime_hours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/placeholder_time"
+            android:text="00 Hours"
+            android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
+            app:layout_constraintEnd_toStartOf="@+id/remainingTime_min"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/time_remaining_till" />
+
+        <TextView
+            android:id="@+id/remainingTime_min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00 Minuies"
             android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/time_remaining_till"/>
+            app:layout_constraintStart_toEndOf="@id/remainingTime_hours"
+            app:layout_constraintTop_toBottomOf="@id/time_remaining_till" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/title_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginStart="@dimen/home_screen_left_margin"
-        android:text="Salaah Times"
-        android:textSize="42dp"
-        android:fontFamily="@font/flamenco_regular"
+        android:layout_marginStart="@dimen/home_screen_start_margin"
+        android:layout_marginTop="@dimen/home_screen_top_margin"
+        android:layout_marginEnd="@dimen/home_screen_end_margin"
+        app:cardBackgroundColor="@color/laurel_green"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/remaining_time_container">
-    </TextView>
+        app:layout_constraintTop_toBottomOf="@id/remaining_time_container">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginStart="@dimen/home_screen_start_margin"
+            android:layout_marginTop="@dimen/home_screen_top_margin"
+            android:fontFamily="@font/flamenco_regular"
+            android:text="Salaah Times"
+            android:textSize="42dp" />
+
+
+    </androidx.cardview.widget.CardView>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="420dp"
+        android:id="@+id/salaah_container"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/match_constraint"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="100dp"
-        android:layout_marginStart="@dimen/home_screen_left_margin"
-        android:layout_marginEnd="300dp"
+        android:layout_marginStart="@dimen/home_screen_start_margin"
+        android:layout_marginTop="@dimen/home_screen_top_margin"
+        android:layout_marginEnd="@dimen/home_screen_end_margin"
+        android:layout_marginBottom="@dimen/home_screen_bottom_margin"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/time_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_container">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fajr"
-            android:layout_weight="1"
             android:id="@+id/fajr"
-            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes">
-        </TextView>
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Zenith"
             android:layout_weight="1"
+            android:text="Fajr"
+            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes" />
+
+        <TextView
             android:id="@+id/zenith"
-            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes">
-        </TextView>
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Thur"
             android:layout_weight="1"
+            android:text="Zenith"
+            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes" />
+
+        <TextView
             android:id="@+id/thur"
-            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes">
-        </TextView>
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Asr"
             android:layout_weight="1"
+            android:text="Thur"
+            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes" />
+
+        <TextView
             android:id="@+id/asr"
-            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes">
-        </TextView>
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Magrieb"
             android:layout_weight="1"
+            android:text="Asr"
+            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes" />
+
+        <TextView
             android:id="@+id/magrieb"
-            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes">
-        </TextView>
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ishai"
             android:layout_weight="1"
+            android:text="Magrieb"
+            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes" />
+
+        <TextView
             android:id="@+id/ishai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ishai"
             android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes">
 
         </TextView>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="420dp"
+        android:id="@+id/time_container"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/match_constraint"
         android:layout_gravity="bottom"
-        android:layout_marginStart="120dp"
-        android:layout_marginBottom="100dp"
-        android:layout_marginEnd="@dimen/home_screen_right_margin"
+        android:layout_marginTop="@dimen/home_screen_top_margin"
+        android:layout_marginBottom="@dimen/home_screen_bottom_margin"
+        android:layout_marginEnd="@dimen/home_screen_end_margin"
+        app:layout_constraintStart_toEndOf="@id/salaah_container"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/title_container">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/placeholder_time"
-            android:layout_weight="1"
             android:id="@+id/fajr_time"
-            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes">
-        </TextView>
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/placeholder_time"
             android:layout_weight="1"
+            android:text="@string/placeholder_time"
+            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes" />
+
+        <TextView
             android:id="@+id/zenith_time"
-            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes">
-        </TextView>
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/placeholder_time"
             android:layout_weight="1"
+            android:text="@string/placeholder_time"
+            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes" />
+
+        <TextView
             android:id="@+id/thur_time"
-            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes">
-        </TextView>
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/placeholder_time"
             android:layout_weight="1"
+            android:text="@string/placeholder_time"
+            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes" />
+
+        <TextView
             android:id="@+id/asr_time"
-            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes">
-        </TextView>
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/placeholder_time"
             android:layout_weight="1"
+            android:text="@string/placeholder_time"
+            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes" />
+
+        <TextView
             android:id="@+id/magrieb_time"
-            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes">
-        </TextView>
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/placeholder_time"
             android:layout_weight="1"
+            android:text="@string/placeholder_time"
+            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes" />
+
+        <TextView
             android:id="@+id/ishai_time"
-            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes">
-        </TextView>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/placeholder_time"
+            android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes" />
     </LinearLayout>
 
 

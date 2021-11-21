@@ -6,10 +6,6 @@
         android:icon="@drawable/ic_baseline_home_24"
         android:id="@+id/homeFragment"/>
     <item
-        android:title="Maps"
-        android:icon="@drawable/placeholder"
-        android:id="@+id/mapsFragment" />
-    <item
         android:title="Calendar"
         android:icon="@drawable/calendar"
         android:id="@+id/calendarFragment" />

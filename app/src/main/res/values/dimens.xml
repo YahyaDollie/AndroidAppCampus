@@ -1,8 +1,10 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
 
-    <dimen name="home_screen_left_margin">16dp</dimen>
-    <dimen name="home_screen_right_margin">16dp</dimen>
-    <dimen name="home_screen_bottom_margin"></dimen>
+    <dimen name="home_screen_start_margin">16dp</dimen>
+    <dimen name="home_screen_end_margin">16dp</dimen>
+    <dimen name="home_screen_bottom_margin">16dp</dimen>
     <dimen name="home_screen_top_margin">12dp</dimen>
+
+    <dimen name="match_constraint">0dp</dimen>
 </resources>

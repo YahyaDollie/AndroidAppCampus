@@ -4,56 +4,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CalendarFragment">
+    tools:context=".CalendarFragment"
+    android:background="@color/laurel_green">
 
-    <TextView
-        android:id="@+id/gregorian_date"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="24dp"
-        android:text="Today's Date"
-        app:layout_constraintBottom_toTopOf="@+id/hijra_date"
+        android:id="@+id/heading_container"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/rv_heading_container"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="@dimen/home_screen_start_margin"
+        android:layout_marginEnd="@dimen/home_screen_end_margin"
+        android:layout_marginTop="@dimen/home_screen_top_margin"
+        android:layout_marginBottom="@dimen/home_screen_bottom_margin"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/date_english"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="placeholder_date"
-        app:layout_constraintBottom_toBottomOf="@+id/gregorian_date"
-        app:layout_constraintStart_toEndOf="@+id/gregorian_date"
-        app:layout_constraintTop_toTopOf="@+id/gregorian_date" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calendar"
+            android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
+            />
 
-    <TextView
-        android:id="@+id/hijra_date"
-        android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cape Town"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/month"
+            tools:text="Month"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rv_heading_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Islamic Date"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/calendar_recyclerView"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/heading_container"
+        android:layout_marginStart="@dimen/home_screen_start_margin"
+        android:layout_marginTop="@dimen/home_screen_top_margin"
+        android:layout_marginEnd="@dimen/home_screen_end_margin"
+        android:layout_marginBottom="@dimen/home_screen_bottom_margin">
 
-    <TextView
-        android:id="@+id/hijra_date_today"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="placeholder_date"
-        app:layout_constraintBottom_toBottomOf="@+id/hijra_date"
-        app:layout_constraintStart_toEndOf="@+id/hijra_date"
-        app:layout_constraintTop_toTopOf="@+id/hijra_date" />
+        <TextView
+            android:id="@+id/date_english"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Date" />
+
+        <TextView
+            android:id="@+id/fajr_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Fajr" />
+
+        <TextView
+            android:id="@+id/thur_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Thur" />
+
+        <TextView
+            android:id="@+id/asr_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Asr" />
+
+        <TextView
+            android:id="@+id/magrieb_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Magrieb" />
+
+        <TextView
+            android:id="@+id/ishai_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Isha" />
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calendar_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_height="@dimen/match_constraint"
+        android:layout_marginTop="@dimen/home_screen_top_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hijra_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_heading_container"
         tools:listitem="@layout/calendar_items"
+        android:layout_marginEnd="@dimen/home_screen_end_margin"
+        android:layout_marginStart="@dimen/home_screen_start_margin"
+        android:layout_marginBottom="@dimen/home_screen_bottom_margin"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
