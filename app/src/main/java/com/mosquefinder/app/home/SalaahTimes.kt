@@ -14,13 +14,19 @@ class SalaahTimes(view: View) : FrameLayout(view.context) {
     private var magrieb: TextView = view.findViewById(R.id.magrieb_time)
     private var ishai: TextView = view.findViewById(R.id.ishai_time)
 
-    fun setSalaahTimes(fajrTime:String, thurTime:String, asrTime:String, magriebTime:String, ishaiTime:String) {
-            fajr.text = fajrTime
-            zenith.text = thurTime
-            thur.text = "13:00 pm"
-            asr.text = asrTime
-            magrieb.text = magriebTime
-            ishai.text = ishaiTime
+    fun setSalaahTimes(
+        fajrTime: String,
+        thurTime: String,
+        asrTime: String,
+        magriebTime: String,
+        ishaiTime: String,
+    ) {
+        fajr.text = fajrTime
+        zenith.text = thurTime
+        thur.text = "13:00 pm"
+        asr.text = asrTime
+        magrieb.text = magriebTime
+        ishai.text = ishaiTime
     }
 
 }

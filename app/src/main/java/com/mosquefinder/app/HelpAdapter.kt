@@ -10,20 +10,21 @@ import com.example.mosquefinder.R
 import com.mosquefinder.app.models.HelpItems
 
 
-class HelpAdapter(var items:ArrayList<HelpItems>):
-    RecyclerView.Adapter<HelpAdapter.ViewHolder>(){
+class HelpAdapter(var items: ArrayList<HelpItems>) :
+    RecyclerView.Adapter<HelpAdapter.ViewHolder>() {
 
     private var previousClickedPosition: Int? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.help_list, parent, false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.help_list, parent, false)
         return ViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.onBind(items[position])
 
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener {
             items[position].isVisible = !items[position].isVisible
             notifyItemChanged(position)
             if (previousClickedPosition != position) {
@@ -45,16 +46,16 @@ class HelpAdapter(var items:ArrayList<HelpItems>):
         return items.size
     }
 
-        class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-            val helpHeading : TextView = itemView.findViewById(R.id.faq_heading_text)
-            val helpBody : TextView = itemView.findViewById(R.id.faq_body)
-            val expandedMenu: ViewGroup = itemView.findViewById(R.id.expanded)
+        val helpHeading: TextView = itemView.findViewById(R.id.faq_heading_text)
+        val helpBody: TextView = itemView.findViewById(R.id.faq_body)
+        val expandedMenu: ViewGroup = itemView.findViewById(R.id.expanded)
 
-            fun onBind(helpList: HelpItems){
-                helpHeading.text = helpList.heading
-                helpBody.text = helpList.body
-                expandedMenu.visibility = if (helpList.isVisible) View.VISIBLE else View.GONE
-            }
+        fun onBind(helpList: HelpItems) {
+            helpHeading.text = helpList.heading
+            helpBody.text = helpList.body
+            expandedMenu.visibility = if (helpList.isVisible) View.VISIBLE else View.GONE
         }
+    }
 }

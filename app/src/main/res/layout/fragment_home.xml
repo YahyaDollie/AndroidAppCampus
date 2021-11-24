@@ -9,72 +9,66 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/match_constraint"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/asparagus"
         app:layout_constraintBottom_toBottomOf="@id/title_container"
-        android:background="@color/asparagus">
+        app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/match_constraint"
-        app:layout_constraintTop_toTopOf="@id/title_container"
+        android:background="@color/asparagus"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/asparagus">
+        app:layout_constraintTop_toTopOf="@id/title_container">
 
     </FrameLayout>
 
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/location_container"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginStart="@dimen/home_screen_start_margin"
+        android:layout_marginTop="@dimen/home_screen_top_margin"
+        android:layout_marginEnd="@dimen/home_screen_end_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/location_container"
+        <ImageView
+            android:id="@+id/location_bg"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/header_background"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="@dimen/home_screen_start_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="@dimen/home_screen_end_margin"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/home_screen_top_margin"
-            >
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/location_bg"
+            app:layout_constraintTop_toTopOf="@id/location_bg">
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/home_screen_start_margin"
+                android:text="Location:"
+                android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading" />
+
+            <Spinner
+                android:id="@+id/location_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/header_background"
-                android:id="@+id/location_bg"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                android:scrollbarSize="30dp"
+                android:spinnerMode="dropdown" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="@id/location_bg"
-                app:layout_constraintStart_toStartOf="@id/location_bg"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:id="@+id/location"
-                    android:text="Location:"
-                    android:layout_marginStart="@dimen/home_screen_start_margin"
-                    android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
-                    />
-
-                <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scrollbarSize="30dp"
-                    android:id="@+id/location_spinner"
-                    android:spinnerMode="dropdown"
-                    />
-
-            </LinearLayout>
+        </LinearLayout>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/remaining_time_container"
@@ -90,11 +84,11 @@
         <ImageView
             android:layout_width="@dimen/match_constraint"
             android:layout_height="@dimen/match_constraint"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/container_bg"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@drawable/container_bg" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/current_time"
@@ -134,31 +128,31 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/home_screen_start_margin"
             android:layout_marginEnd="@dimen/home_screen_end_margin"
-            android:text="{Next salaah}"
             android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/time_remaining_till"
-            app:layout_constraintTop_toBottomOf="@id/current_time" />
+            app:layout_constraintTop_toBottomOf="@id/current_time"
+            tools:text="{Next salaah}" />
 
         <TextView
             android:id="@+id/remainingTime_hours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00 Hours"
             android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
             app:layout_constraintEnd_toStartOf="@+id/remainingTime_min"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/time_remaining_till" />
+            app:layout_constraintTop_toBottomOf="@id/time_remaining_till"
+            tools:text="00 Hours" />
 
         <TextView
             android:id="@+id/remainingTime_min"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00 Minuies"
             android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/remainingTime_hours"
-            app:layout_constraintTop_toBottomOf="@id/time_remaining_till" />
+            app:layout_constraintTop_toBottomOf="@id/time_remaining_till"
+            tools:text="00 Minuies" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -261,12 +255,12 @@
         android:layout_height="@dimen/match_constraint"
         android:layout_gravity="bottom"
         android:layout_marginTop="@dimen/home_screen_top_margin"
-        android:layout_marginBottom="@dimen/home_screen_bottom_margin"
         android:layout_marginEnd="@dimen/home_screen_end_margin"
-        app:layout_constraintStart_toEndOf="@id/salaah_container"
+        android:layout_marginBottom="@dimen/home_screen_bottom_margin"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/salaah_container"
 
         app:layout_constraintTop_toBottomOf="@+id/title_container">
 

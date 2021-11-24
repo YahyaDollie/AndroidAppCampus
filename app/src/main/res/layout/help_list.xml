@@ -13,21 +13,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            tools:text="Heading"
-            android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"/>
+            android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
+            tools:text="Heading" />
 
         <LinearLayout
+            android:id="@+id/expanded"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/expanded"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/faq_body"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
                 android:clickable="true"
+                android:ellipsize="end"
                 android:focusable="true"
                 tools:text="loren ipsum" />
         </LinearLayout>

@@ -4,39 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CalendarFragment"
-    android:background="@color/laurel_green">
+    android:background="@color/laurel_green"
+    tools:context=".CalendarFragment">
 
     <LinearLayout
+        android:id="@+id/heading_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/heading_container"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/home_screen_start_margin"
+        android:layout_marginTop="@dimen/home_screen_top_margin"
+        android:layout_marginEnd="@dimen/home_screen_end_margin"
+        android:layout_marginBottom="@dimen/home_screen_bottom_margin"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/rv_heading_container"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="@dimen/home_screen_start_margin"
-        android:layout_marginEnd="@dimen/home_screen_end_margin"
-        android:layout_marginTop="@dimen/home_screen_top_margin"
-        android:layout_marginBottom="@dimen/home_screen_bottom_margin"
-        android:orientation="vertical">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Calendar"
-            android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
-            />
+            android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cape Town"/>
+            android:text="Cape Town" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/month"
-            tools:text="Month"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Month" />
 
     </LinearLayout>
 
@@ -44,14 +43,14 @@
         android:id="@+id/rv_heading_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/calendar_recyclerView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/heading_container"
         android:layout_marginStart="@dimen/home_screen_start_margin"
         android:layout_marginTop="@dimen/home_screen_top_margin"
         android:layout_marginEnd="@dimen/home_screen_end_margin"
-        android:layout_marginBottom="@dimen/home_screen_bottom_margin">
+        android:layout_marginBottom="@dimen/home_screen_bottom_margin"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/calendar_recyclerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/heading_container">
 
         <TextView
             android:id="@+id/date_english"
@@ -101,14 +100,13 @@
         android:id="@+id/calendar_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/match_constraint"
-        android:layout_marginTop="@dimen/home_screen_top_margin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rv_heading_container"
-        tools:listitem="@layout/calendar_items"
-        android:layout_marginEnd="@dimen/home_screen_end_margin"
         android:layout_marginStart="@dimen/home_screen_start_margin"
+        android:layout_marginTop="@dimen/home_screen_top_margin"
+        android:layout_marginEnd="@dimen/home_screen_end_margin"
         android:layout_marginBottom="@dimen/home_screen_bottom_margin"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_heading_container"
+        tools:listitem="@layout/calendar_items" />
 </androidx.constraintlayout.widget.ConstraintLayout>

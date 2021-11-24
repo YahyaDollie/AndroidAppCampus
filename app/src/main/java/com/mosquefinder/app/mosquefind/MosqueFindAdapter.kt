@@ -11,12 +11,13 @@ import com.example.mosquefinder.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mosquefinder.app.models.MasjidModel
 
-internal class  MosqueFindAdapter(var items: List<MasjidModel>):
+internal class MosqueFindAdapter(var items: List<MasjidModel>) :
     RecyclerView.Adapter<MosqueFindAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_list, parent, false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_list, parent, false)
         return ViewHolder(itemView)
     }
 
@@ -30,9 +31,9 @@ internal class  MosqueFindAdapter(var items: List<MasjidModel>):
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private val locationButtonListener : LocationButtonListener = MosqueFindFragment()
+        private val locationButtonListener: LocationButtonListener = MosqueFindFragment()
 
-        fun bind(masjidModel: MasjidModel){
+        fun bind(masjidModel: MasjidModel) {
             val masjidName = itemView.findViewById<TextView>(R.id.masjid_title)
             masjidName.text = masjidModel.mosqueTitle
             val masjidArea = itemView.findViewById<TextView>(R.id.address)
@@ -41,7 +42,7 @@ internal class  MosqueFindAdapter(var items: List<MasjidModel>):
             Glide.with(itemView.context).load(masjidModel.img).into(masjidimg)
             masjidimg.clipToOutline = true
 
-            val locationButton : FloatingActionButton = itemView.findViewById(R.id.locationBtn)
+            val locationButton: FloatingActionButton = itemView.findViewById(R.id.locationBtn)
 
             locationButton.setOnClickListener {
                 locationButtonListener.locationButtonClicked(masjidModel.geoLocation, itemView)

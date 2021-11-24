@@ -13,11 +13,12 @@ import com.mosquefinder.app.models.Item
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 
-class CalendarAdapter(var items: List<Item>):
-    RecyclerView.Adapter<CalendarAdapter.ViewHolder>(){
+class CalendarAdapter(var items: List<Item>) :
+    RecyclerView.Adapter<CalendarAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.calendar_items, parent, false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.calendar_items, parent, false)
         TransitionManager.beginDelayedTransition(parent)
         return ViewHolder(itemView)
     }
@@ -31,22 +32,22 @@ class CalendarAdapter(var items: List<Item>):
         return items.size
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var date :TextView = itemView.findViewById(R.id.date_english)
-        var fajr :TextView = itemView.findViewById(R.id.fajr_calendar)
-        var thur :TextView = itemView.findViewById(R.id.thur_calendar)
-        var asr :TextView = itemView.findViewById(R.id.asr_calendar)
-        var magrieb :TextView = itemView.findViewById(R.id.magrieb_calendar)
-        var ishai :TextView = itemView.findViewById(R.id.ishai_calendar)
+        var date: TextView = itemView.findViewById(R.id.date_english)
+        var fajr: TextView = itemView.findViewById(R.id.fajr_calendar)
+        var thur: TextView = itemView.findViewById(R.id.thur_calendar)
+        var asr: TextView = itemView.findViewById(R.id.asr_calendar)
+        var magrieb: TextView = itemView.findViewById(R.id.magrieb_calendar)
+        var ishai: TextView = itemView.findViewById(R.id.ishai_calendar)
 
         @SuppressLint("SimpleDateFormat")
-        fun onBind(calendarModel: Item){
+        fun onBind(calendarModel: Item) {
             var timeFormat: DateFormat = SimpleDateFormat("hh:mm aa")
             val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd")
 
-            var outputTimeFormat : DateFormat? = SimpleDateFormat("HH:mm")
-            val outputDateFormat : DateFormat = SimpleDateFormat("dd")
+            var outputTimeFormat: DateFormat? = SimpleDateFormat("HH:mm")
+            val outputDateFormat: DateFormat = SimpleDateFormat("dd")
 
             date.text = outputDateFormat.format(dateFormat.parse(calendarModel.date_for))
             fajr.text = outputTimeFormat?.format(timeFormat.parse(calendarModel.fajr))

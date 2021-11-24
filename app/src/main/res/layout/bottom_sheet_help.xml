@@ -25,19 +25,19 @@
             android:layout_height="wrap_content"
             android:text="Help and FAQ"
             android:textSize="24sp"
+            android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/information"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Please select an item below to expand"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Heading"
             android:textSize="16sp"
-            android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"/>
+            android:theme="@style/Theme.MosqueFinder.HomeScreenTopHeading"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Heading" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -53,9 +53,9 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/help_rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/help_rv"/>
+            android:layout_height="match_parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

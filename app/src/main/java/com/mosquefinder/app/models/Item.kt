@@ -7,5 +7,5 @@ data class Item(
     val fajr: String,
     val isha: String,
     val maghrib: String,
-    val shurooq: String
+    val shurooq: String,
 )

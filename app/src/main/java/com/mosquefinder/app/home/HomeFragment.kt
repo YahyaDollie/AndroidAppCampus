@@ -16,6 +16,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.mosquefinder.R
 import com.google.gson.GsonBuilder
+import com.google.gson.JsonObject
 import com.mosquefinder.app.models.DailyModel
 import org.json.JSONObject
 import java.util.*

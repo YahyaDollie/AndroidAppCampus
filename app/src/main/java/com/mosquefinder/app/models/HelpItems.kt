@@ -1,7 +1,7 @@
 package com.mosquefinder.app.models
 
-data class HelpItems (
+data class HelpItems(
     val heading: String,
     val body: String,
-    var isVisible: Boolean = false
-        )
+    var isVisible: Boolean = false,
+)

@@ -7,5 +7,5 @@ data class CalendarModel(
     val thurTime: String,
     val asrTime: String,
     val magriebTime: String,
-    val ishaiTime: String
+    val ishaiTime: String,
 )

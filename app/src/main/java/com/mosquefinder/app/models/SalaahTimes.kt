@@ -24,5 +24,5 @@ data class SalaahTimes(
     val status_valid: Int,
     val timezone: String,
     val title: String,
-    val today_weather: TodayWeather
+    val today_weather: TodayWeather,
 )

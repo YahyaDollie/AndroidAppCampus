@@ -27,11 +27,11 @@ class CalendarFragment : Fragment() {
     private lateinit var calendarView: View
     private lateinit var recyclerView: RecyclerView
     private var calendarList: ArrayList<Item> = ArrayList()
-    private var adapter : CalendarAdapter = CalendarAdapter(calendarList)
+    private var adapter: CalendarAdapter = CalendarAdapter(calendarList)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         calendarView = inflater.inflate(R.layout.fragment_calendar, container, false)
         return calendarView
@@ -43,33 +43,33 @@ class CalendarFragment : Fragment() {
         monthFromDate()
     }
 
-    private fun initRecyclerView(){
+    private fun initRecyclerView() {
         recyclerView = calendarView.findViewById(R.id.calendar_recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
+        recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context,
+            DividerItemDecoration.VERTICAL))
         recyclerView.adapter = adapter
         adapter.items = calendarList
         adapter.notifyDataSetChanged()
     }
 
     private fun extractData() {
-        val url = "https://muslimsalat.com/monthly/cape-town.json?key=e7e6e40fc282866c47cda3e819fc9f04"
+        val url =
+            "https://muslimsalat.com/monthly/cape-town.json?key=e7e6e40fc282866c47cda3e819fc9f04"
         val requestQueue = Volley.newRequestQueue(context)
         val jsonRequestObjectRequest = JsonObjectRequest(
             Request.Method.GET, url, null,
-            {
-                    response ->
+            { response ->
                 gsonParserMonth(response)
                 initRecyclerView()
-            }
-            , {
+            }, {
 
             }
         )
         requestQueue.add(jsonRequestObjectRequest)
     }
 
-    private fun gsonParserMonth(response: JSONObject){
+    private fun gsonParserMonth(response: JSONObject) {
         val gson = GsonBuilder().create()
         val obj = gson.fromJson(response.toString(), MonthModel::class.java)
         calendarList = obj.items as ArrayList<Item>
