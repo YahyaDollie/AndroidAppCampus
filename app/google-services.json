@@ -35,7 +35,8 @@
             }
           ]
         }
-      }
+      },
+      "api_key": [{"current_key":"AIzaSyDkDrVPtIeR7pqVqy9JABovoKW-gJB2hXM"}]
     }
   ],
   "configuration_version": "1"
