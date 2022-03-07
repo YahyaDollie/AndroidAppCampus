@@ -17,7 +17,7 @@ class BroadcastHandler() : BroadcastReceiver() {
     private lateinit var currentTimeCallbackListener: CurrentTimeCallbackListener
     private lateinit var updatedCurrentTime: Date
 
-    override fun onReceive(context: Context?, intent: Intent?) {
+    override fun onReceive(context: Context, intent: Intent?) {
         if (intent?.action?.compareTo(Intent.ACTION_TIME_TICK) == 0) {
             updatedCurrentTime = Calendar.getInstance().time
             currentTimeCallbackListener.displayCurrentTime(updatedCurrentTime)
