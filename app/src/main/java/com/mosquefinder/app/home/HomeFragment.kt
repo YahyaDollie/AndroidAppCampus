@@ -13,10 +13,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.HttpHeaderParser
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.mosquefinder.R
 import com.google.gson.GsonBuilder
+import com.mosquefinder.app.Volley.CacheRequest
 import com.mosquefinder.app.Volley.VolleyInterface
 import com.mosquefinder.app.Volley.VolleyRequest
 import com.mosquefinder.app.models.DailyModel
