@@ -112,7 +112,7 @@ class HomeFragment : Fragment(), CurrentTimeCallbackListener, VolleyInterface {
 
     override fun onResponse(response: String) {
         gsonParserDaily(response)
-        Log.d("onResponse: ", response + "0")
+        currentTime.setInitRemainingTime(response)
     }
 
 }
