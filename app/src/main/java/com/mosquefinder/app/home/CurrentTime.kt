@@ -3,16 +3,17 @@ package com.mosquefinder.app.home
 import android.util.Log
 import android.view.View
 import android.widget.TextView
-import com.android.volley.toolbox.Volley
 import com.example.mosquefinder.R
 import com.google.gson.GsonBuilder
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import com.mosquefinder.app.models.DailyModel
 import org.json.JSONObject
-import java.lang.IndexOutOfBoundsException
 import java.text.SimpleDateFormat
 import java.time.Duration
 import java.time.LocalTime
 import java.util.*
+
 
 /*
 This class contains the logic for determining how much time remains until the next salaah
@@ -36,9 +37,9 @@ class CurrentTime(view: View) {
         clockTime.text = initTime
     }
 
-    fun setInitRemainingTime(response: JSONObject) {
+    fun setInitRemainingTime(response: String) {
         val gson = GsonBuilder().create()
-        val obj = gson.fromJson(response.toString(), DailyModel::class.java)
+        val obj = gson.fromJson(response, DailyModel::class.java)
 
         val times = arrayOf(
             obj.items[0].fajr,

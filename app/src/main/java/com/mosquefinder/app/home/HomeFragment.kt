@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,20 +13,23 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.HttpHeaderParser
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.mosquefinder.R
 import com.google.gson.GsonBuilder
-import com.google.gson.JsonObject
+import com.mosquefinder.app.Volley.CacheRequest
+import com.mosquefinder.app.Volley.VolleyInterface
+import com.mosquefinder.app.Volley.VolleyRequest
 import com.mosquefinder.app.models.DailyModel
-import org.json.JSONObject
 import java.util.*
 
 /*
 Main fragment for the home view
  */
 
-class HomeFragment : Fragment(), CurrentTimeCallbackListener {
+class HomeFragment : Fragment(), CurrentTimeCallbackListener, VolleyInterface {
     private lateinit var homeView: View
     private lateinit var navController: NavController
     private lateinit var currentTime: CurrentTime
@@ -34,20 +38,26 @@ class HomeFragment : Fragment(), CurrentTimeCallbackListener {
     private lateinit var spinnerDropdown: Spinner
 
     val intentFilter = IntentFilter(Intent.ACTION_TIME_TICK)
+    val url = "https://muslimsalat.com/cape-town.json?key=e7e6e40fc282866c47cda3e819fc9f04"
 
     @SuppressLint("ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        // Inflate the layout for this fragment
         homeView = inflater.inflate(R.layout.fragment_home, container, false)
         currentTime = CurrentTime(homeView)
         salaahTimes = SalaahTimes(homeView)
         broadcastHandler = BroadcastHandler()
         registerReciver()
-        extractDate()
+        val volleyRequest = VolleyRequest.getInstance(context, this)
+        volleyRequest.getRequest(url)
         return homeView
+    }
+
+    override fun onStop() {
+        super.onStop()
+        VolleyRequest.resetInstance()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -88,24 +98,9 @@ class HomeFragment : Fragment(), CurrentTimeCallbackListener {
         }
     }
 
-    private fun extractDate() {
-        val url = "https://muslimsalat.com/cape-town.json?key=e7e6e40fc282866c47cda3e819fc9f04"
-        val requestQueue = Volley.newRequestQueue(context)
-        val jsonRequestObjectRequest = JsonObjectRequest(
-            Request.Method.GET, url, null,
-            { response ->
-                gsonParserDaily(response)
-                currentTime.setInitRemainingTime(response)
-            }, {
-
-            }
-        )
-        requestQueue.add(jsonRequestObjectRequest)
-    }
-
-    private fun gsonParserDaily(response: JSONObject) {
+    private fun gsonParserDaily(response: String) {
         val gson = GsonBuilder().create()
-        val obj = gson.fromJson(response.toString(), DailyModel::class.java)
+        val obj = gson.fromJson(response, DailyModel::class.java)
         val times = obj.items[0]
 
         salaahTimes.setSalaahTimes(times.fajr, times.dhuhr, times.asr, times.maghrib, times.isha)
@@ -113,6 +108,11 @@ class HomeFragment : Fragment(), CurrentTimeCallbackListener {
 
     override fun displayCurrentTime(time: Date) {
         currentTime.formatDate(time)
+    }
+
+    override fun onResponse(response: String) {
+        gsonParserDaily(response)
+        currentTime.setInitRemainingTime(response)
     }
 
 }

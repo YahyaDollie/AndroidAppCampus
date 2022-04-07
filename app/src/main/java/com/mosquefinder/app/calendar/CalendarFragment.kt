@@ -15,6 +15,8 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.mosquefinder.R
 import com.google.gson.GsonBuilder
+import com.mosquefinder.app.Volley.VolleyInterface
+import com.mosquefinder.app.Volley.VolleyRequest
 import com.mosquefinder.app.models.Item
 import com.mosquefinder.app.models.MonthModel
 import org.json.JSONObject
@@ -22,25 +24,32 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class CalendarFragment : Fragment() {
+class CalendarFragment : Fragment(), VolleyInterface {
 
     private lateinit var calendarView: View
     private lateinit var recyclerView: RecyclerView
     private var calendarList: ArrayList<Item> = ArrayList()
     private var adapter: CalendarAdapter = CalendarAdapter(calendarList)
+    val url = "https://muslimsalat.com/monthly/cape-town.json?key=e7e6e40fc282866c47cda3e819fc9f04"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         calendarView = inflater.inflate(R.layout.fragment_calendar, container, false)
+        val volleyRequest = VolleyRequest.getInstance(context, this)
+        volleyRequest.getRequest(url)
         return calendarView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        extractData()
         monthFromDate()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        VolleyRequest.resetInstance()
     }
 
     private fun initRecyclerView() {
@@ -53,25 +62,9 @@ class CalendarFragment : Fragment() {
         adapter.notifyDataSetChanged()
     }
 
-    private fun extractData() {
-        val url =
-            "https://muslimsalat.com/monthly/cape-town.json?key=e7e6e40fc282866c47cda3e819fc9f04"
-        val requestQueue = Volley.newRequestQueue(context)
-        val jsonRequestObjectRequest = JsonObjectRequest(
-            Request.Method.GET, url, null,
-            { response ->
-                gsonParserMonth(response)
-                initRecyclerView()
-            }, {
-
-            }
-        )
-        requestQueue.add(jsonRequestObjectRequest)
-    }
-
-    private fun gsonParserMonth(response: JSONObject) {
+    private fun gsonParserMonth(response: String) {
         val gson = GsonBuilder().create()
-        val obj = gson.fromJson(response.toString(), MonthModel::class.java)
+        val obj = gson.fromJson(response, MonthModel::class.java)
         calendarList = obj.items as ArrayList<Item>
 
         Log.d("gsonParserMonth: ", calendarList.toString())
@@ -81,5 +74,11 @@ class CalendarFragment : Fragment() {
         val calendar = Calendar.getInstance()
         val month: TextView = calendarView.findViewById(R.id.month)
         month.text = SimpleDateFormat("MMMM").format(calendar.time)
+    }
+
+    override fun onResponse(response: String) {
+        gsonParserMonth(response)
+        Log.d("onResponse: ",  "1")
+//        initRecyclerView()
     }
 }
