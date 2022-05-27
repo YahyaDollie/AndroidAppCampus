@@ -20,10 +20,11 @@
         android:layout_height="@dimen/match_constraint"
         android:background="@color/asparagus"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@id/title_container">
+        app:layout_constraintTop_toTopOf="@id/title_container"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp">
 
     </FrameLayout>
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/location_container"
@@ -185,8 +186,8 @@
 
     <LinearLayout
         android:id="@+id/salaah_container"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/match_constraint"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginStart="@dimen/home_screen_start_margin"
         android:layout_marginTop="@dimen/home_screen_top_margin"
@@ -251,8 +252,8 @@
 
     <LinearLayout
         android:id="@+id/time_container"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/match_constraint"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginTop="@dimen/home_screen_top_margin"
         android:layout_marginEnd="@dimen/home_screen_end_margin"
@@ -312,6 +313,5 @@
             android:text="@string/placeholder_time"
             android:theme="@style/Theme.MosqueFinder.HomeScreenSalaahTimes" />
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

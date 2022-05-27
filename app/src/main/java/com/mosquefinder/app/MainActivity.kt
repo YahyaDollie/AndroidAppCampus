@@ -1,5 +1,9 @@
 package com.mosquefinder.app
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -9,11 +13,13 @@ import com.example.mosquefinder.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.mosquefinder.app.home.BroadcastHandler
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var helpBtn: FloatingActionButton
     private lateinit var bottomSheetDialog: BottomSheetDialog
+    private lateinit var receiver: BroadcastReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,5 +40,12 @@ class MainActivity : AppCompatActivity() {
             val bottomSheetFragment = BottomSheetFragment()
             bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
         }
+
+        receiver = BroadcastHandler(application)
+        registerReceiver(receiver, IntentFilter(Intent.ACTION_TIME_TICK))
+    }
+
+    override fun registerReceiver(receiver: BroadcastReceiver?, filter: IntentFilter?): Intent? {
+        return super.registerReceiver(receiver, filter)
     }
 }
